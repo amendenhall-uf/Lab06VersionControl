@@ -5,6 +5,12 @@ def encode(password):
         encodedPass += str(int(password[i])+3)[-1] # Add the first digit of the number plus 3 to the password
     return encodedPass
 
+def decode(password):
+    decodedPass = ""
+    for i in range(len(password)):
+        decodedPass += str(int(password[i])+7)[-1] # Add the first digit of the number plus 7
+        # This first digit is the same as if it were shifted 3 items down
+    return decodedPass
 if __name__ == "__main__":
     passEncoded = ""
     while True:
@@ -14,6 +20,6 @@ if __name__ == "__main__":
             passEncoded = encode(input('Please enter your password to encode: '))
             print('Your password has been encoded and stored!')
         elif option == 2:
-            pass
+            print(f'The encoded password is {passEncoded}, and the original password is {decode(passEncoded)}.')
         elif option == 3:
             break
